@@ -1,6 +1,6 @@
 # 🔓 Análisis completo: Máquina Lame - Hack The Box
 
-![Logo](../capturas/logo_r4ms4nt_circular.png)
+![Logo](capturas/logo_r4ms4nt_circular.png)
 
 > **Primera máquina publicada en Hack The Box**. Diseñada como puerta de entrada para nuevos usuarios. Ideal para aprender enumeración, detección de vulnerabilidades clásicas y explotación básica con Metasploit.
 
@@ -19,7 +19,7 @@ Lame/
 └── tree_lame.txt     # Estructura completa del proyecto
 ```
 
-📄 Ver estructura completa: [tree_lame.txt](../tree_lame.txt)
+📄 Ver estructura completa: [tree_lame.txt](tree_lame.txt)
 
 ---
 
@@ -36,7 +36,7 @@ nmap -v -T4 -Pn --top-ports 1000 -oA nmap/top1000_tcp 10.129.56.2
 - Puertos abiertos: `21`, `22`, `139`, `445`
 - Total: **4**
 
-📸 [Captura](../capturas/nmap_top1000.png) | [grep open](../capturas/grep_nmap.png)
+📸 [Captura](capturas/nmap_top1000.png) | [grep open](capturas/grep_nmap.png)
 
 ---
 
@@ -59,7 +59,7 @@ nmap -sV -Pn -p21 -oA nmap/ftp_version 10.129.56.2
 ```
 vsftpd 2.3.4
 ```
-📸 [Captura](../capturas/nmap_port_21.png)
+📸 [Captura](capturas/nmap_port_21.png)
 
 ---
 
@@ -79,7 +79,7 @@ run
 Exploit completed, but no session was created.
 ```
 🔴 El puerto 6200 **no respondió externamente**, por lo tanto: **NO** funciona.
-📸 [Captura](../capturas/msfconsole1.png)
+📸 [Captura](capturas/msfconsole1.png)
 
 ---
 
@@ -97,7 +97,7 @@ nmap -sV -Pn -p139,445 --script=smb-os-discovery -oA nmap/smb_version 10.129.56.
 Samba smbd 3.0.20-Debian
 ```
 🟢 Respuesta válida: `3.0.20`
-📸 [Captura](../capturas/nmap_smb.png)
+📸 [Captura](capturas/nmap_smb.png)
 
 ---
 
@@ -125,7 +125,7 @@ run
 ```
 whoami → root
 ```
-📸 [Captura](../capturas/msfconsole_para_flag1_2.png)
+📸 [Captura](capturas/msfconsole_para_flag1_2.png)
 ✅ **Respuesta correcta:** `root`
 
 ---
@@ -137,7 +137,7 @@ cd /home/makis
 cat user.txt
 ```
 🟢 Flag: `60fc5d64febbdebfe8cc331838bff0b0`
-📸 [Flag 1](../capturas/Flag_1.png)
+📸 [Flag 1](capturas/Flag_1.png)
 
 ---
 
@@ -148,7 +148,7 @@ cd /root
 cat root.txt
 ```
 🟢 Flag: `c80b43503b56dc7b0dc82643157b4329`
-📸 [Flag 2](../capturas/Flag_2.png)
+📸 [Flag 2](capturas/Flag_2.png)
 
 ---
 
