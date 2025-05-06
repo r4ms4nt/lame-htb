@@ -42,8 +42,83 @@ Este repositorio documenta, paso a paso, el proceso de explotación guiado en mo
 │   ├── Task_5.png
 │   ├── Task_6.png
 │   └── Task_9.png
-├── doc
+├── .git
+│   ├── branches
+│   ├── COMMIT_EDITMSG
+│   ├── config
+│   ├── description
+│   ├── HEAD
+│   ├── hooks
+│   │   ├── applypatch-msg.sample
+│   │   ├── commit-msg.sample
+│   │   ├── fsmonitor-watchman.sample
+│   │   ├── post-update.sample
+│   │   ├── pre-applypatch.sample
+│   │   ├── pre-commit.sample
+│   │   ├── pre-merge-commit.sample
+│   │   ├── prepare-commit-msg.sample
+│   │   ├── pre-push.sample
+│   │   ├── pre-rebase.sample
+│   │   ├── pre-receive.sample
+│   │   ├── push-to-checkout.sample
+│   │   └── update.sample
+│   ├── index
+│   ├── info
+│   │   └── exclude
+│   ├── logs
+│   │   ├── HEAD
+│   │   └── refs
+│   ├── objects
+│   │   ├── 04
+│   │   ├── 07
+│   │   ├── 09
+│   │   ├── 10
+│   │   ├── 18
+│   │   ├── 1c
+│   │   ├── 28
+│   │   ├── 30
+│   │   ├── 33
+│   │   ├── 3d
+│   │   ├── 3f
+│   │   ├── 4b
+│   │   ├── 4d
+│   │   ├── 4f
+│   │   ├── 54
+│   │   ├── 56
+│   │   ├── 5d
+│   │   ├── 60
+│   │   ├── 61
+│   │   ├── 64
+│   │   ├── 70
+│   │   ├── 72
+│   │   ├── 77
+│   │   ├── 78
+│   │   ├── 7c
+│   │   ├── 82
+│   │   ├── 85
+│   │   ├── 8a
+│   │   ├── 93
+│   │   ├── 9e
+│   │   ├── a1
+│   │   ├── a6
+│   │   ├── b1
+│   │   ├── b6
+│   │   ├── bd
+│   │   ├── be
+│   │   ├── cf
+│   │   ├── dc
+│   │   ├── de
+│   │   ├── f2
+│   │   ├── fb
+│   │   ├── info
+│   │   └── pack
+│   └── refs
+│       ├── heads
+│       ├── remotes
+│       └── tags
+├── gitignore
 ├── lame_htb_manual.md
+├── LICENSE
 ├── nmap
 │   ├── ftp_version.gnmap
 │   ├── ftp_version.nmap
@@ -54,9 +129,10 @@ Este repositorio documenta, paso a paso, el proceso de explotación guiado en mo
 │   ├── top1000_tcp.gnmap
 │   ├── top1000_tcp.nmap
 │   └── top1000_tcp.xml
+├── README.md
 └── tree_lame.txt
 
-4 directories, 33 files
+57 directories, 56 files
 ```
 
 ---
