@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE nmaprun>
+<?xml-stylesheet href="file:///usr/bin/../share/nmap/nmap.xsl" type="text/xsl"?>
+<!-- Nmap 7.94SVN scan initiated Tue May  6 13:41:57 2025 as: nmap -sV -Pn -p139,445 -oA nmap/smb_version 10.129.56.2 -->
+<nmaprun scanner="nmap" args="nmap -sV -Pn -p139,445 -oA nmap/smb_version 10.129.56.2" start="1746531717" startstr="Tue May  6 13:41:57 2025" version="7.94SVN" xmloutputversion="1.05">
+<scaninfo type="connect" protocol="tcp" numservices="2" services="139,445"/>
+<verbose level="0"/>
+<debugging level="0"/>
+<host starttime="1746531717" endtime="1746531729"><status state="up" reason="user-set" reason_ttl="0"/>
+<address addr="10.129.56.2" addrtype="ipv4"/>
+<hostnames>
+</hostnames>
+<ports><port protocol="tcp" portid="139"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="netbios-ssn" product="Samba smbd" version="3.X - 4.X" extrainfo="workgroup: WORKGROUP" method="probed" conf="10"><cpe>cpe:/a:samba:samba</cpe></service></port>
+<port protocol="tcp" portid="445"><state state="open" reason="syn-ack" reason_ttl="0"/><service name="netbios-ssn" product="Samba smbd" version="3.X - 4.X" extrainfo="workgroup: WORKGROUP" method="probed" conf="10"><cpe>cpe:/a:samba:samba</cpe></service></port>
+</ports>
+<times srtt="53299" rttvar="39991" to="213263"/>
+</host>
+<runstats><finished time="1746531729" timestr="Tue May  6 13:42:09 2025" summary="Nmap done at Tue May  6 13:42:09 2025; 1 IP address (1 host up) scanned in 11.44 seconds" elapsed="11.44" exit="success"/><hosts up="1" down="0" total="1"/>
+</runstats>
+</nmaprun>

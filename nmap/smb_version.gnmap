@@ -1,0 +1,4 @@
+# Nmap 7.94SVN scan initiated Tue May  6 13:41:57 2025 as: nmap -sV -Pn -p139,445 -oA nmap/smb_version 10.129.56.2
+Host: 10.129.56.2 ()	Status: Up
+Host: 10.129.56.2 ()	Ports: 139/open/tcp//netbios-ssn//Samba smbd 3.X - 4.X (workgroup: WORKGROUP)/, 445/open/tcp//netbios-ssn//Samba smbd 3.X - 4.X (workgroup: WORKGROUP)/
+# Nmap done at Tue May  6 13:42:09 2025 -- 1 IP address (1 host up) scanned in 11.44 seconds

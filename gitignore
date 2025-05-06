@@ -1,0 +1,23 @@
+# Archivos de salida de herramientas
+*.nmap
+*.gnmap
+*.xml
+*.pcap
+*.log
+
+# Backups de editor
+*~
+
+# Salidas temporales
+*.out
+*.tmp
+
+# Capturas sensibles (puedes excluir algunas)
+capturas/*submit.png
+
+# Entornos
+.env
+
+# Otros
+.DS_Store
+Thumbs.db
