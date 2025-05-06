@@ -1,6 +1,6 @@
 # 🔓 Análisis completo: Máquina Lame - Hack The Box
 
-![Logo](../capturas/logo_r4ms4nt_circular.png)
+![Logo](capturas/logo_r4ms4nt_circular.png)
 
 > **Primera máquina publicada en Hack The Box**. Diseñada como puerta de entrada para nuevos usuarios. Ideal para aprender enumeración, detección de vulnerabilidades clásicas y explotación básica con Metasploit.
 
@@ -11,115 +11,10 @@
 ```
 .
 ├── capturas
-│   ├── Flag_1.png
-│   ├── Flag_1submit.png
-│   ├── Flag_2.png
-│   ├── Flag_2submit.png
-│   ├── grep_nmap.png
-│   ├── logo_r4ms4nt_circular.png
-│   ├── msfconsole1.png
-│   ├── msfconsole2.png
-│   ├── msfconsole_para_flag1_2.png
-│   ├── msfconsole_para_flag1.png
-│   ├── nmap_port_21.png
-│   ├── nmap_smb.png
-│   ├── nmap_top1000.png
-│   ├── Task_10.png
-│   ├── Task_11_Final.png
-│   ├── Task_1.png
-│   ├── Task_2.png
-│   ├── Task_3.png
-│   ├── Task_4.png
-│   ├── Task_5.png
-│   ├── Task_6.png
-│   └── Task_9.png
-├── .git
-│   ├── branches
-│   ├── COMMIT_EDITMSG
-│   ├── config
-│   ├── description
-│   ├── HEAD
-│   ├── hooks
-│   │   ├── applypatch-msg.sample
-│   │   ├── commit-msg.sample
-│   │   ├── fsmonitor-watchman.sample
-│   │   ├── post-update.sample
-│   │   ├── pre-applypatch.sample
-│   │   ├── pre-commit.sample
-│   │   ├── pre-merge-commit.sample
-│   │   ├── prepare-commit-msg.sample
-│   │   ├── pre-push.sample
-│   │   ├── pre-rebase.sample
-│   │   ├── pre-receive.sample
-│   │   ├── push-to-checkout.sample
-│   │   └── update.sample
-│   ├── index
-│   ├── info
-│   │   └── exclude
-│   ├── logs
-│   │   ├── HEAD
-│   │   └── refs
-│   ├── objects
-│   │   ├── 04
-│   │   ├── 07
-│   │   ├── 09
-│   │   ├── 10
-│   │   ├── 18
-│   │   ├── 1c
-│   │   ├── 28
-│   │   ├── 30
-│   │   ├── 33
-│   │   ├── 3d
-│   │   ├── 3f
-│   │   ├── 4b
-│   │   ├── 4d
-│   │   ├── 4f
-│   │   ├── 54
-│   │   ├── 56
-│   │   ├── 5d
-│   │   ├── 60
-│   │   ├── 61
-│   │   ├── 64
-│   │   ├── 70
-│   │   ├── 72
-│   │   ├── 77
-│   │   ├── 78
-│   │   ├── 7c
-│   │   ├── 82
-│   │   ├── 85
-│   │   ├── 8a
-│   │   ├── 93
-│   │   ├── 9e
-│   │   ├── a1
-│   │   ├── a6
-│   │   ├── b1
-│   │   ├── b6
-│   │   ├── bd
-│   │   ├── be
-│   │   ├── cf
-│   │   ├── dc
-│   │   ├── de
-│   │   ├── f2
-│   │   ├── fb
-│   │   ├── info
-│   │   └── pack
-│   └── refs
-│       ├── heads
-│       ├── remotes
-│       └── tags
+├── nmap
 ├── gitignore
 ├── lame_htb_manual.md
 ├── LICENSE
-├── nmap
-│   ├── ftp_version.gnmap
-│   ├── ftp_version.nmap
-│   ├── ftp_version.xml
-│   ├── smb_version.gnmap
-│   ├── smb_version.nmap
-│   ├── smb_version.xml
-│   ├── top1000_tcp.gnmap
-│   ├── top1000_tcp.nmap
-│   └── top1000_tcp.xml
 ├── README.md
 └── tree_lame.txt
 
@@ -128,7 +23,7 @@
 
 
 
-📄 Ver estructura completa: [tree_lame.txt](../tree_lame.txt)
+📄 Ver estructura completa: [tree_lame.txt](tree_lame.txt)
 
 ---
 
@@ -143,7 +38,7 @@
 - Puertos abiertos: `21`, `22`, `139`, `445`
 - Total: **4**
 
-📸 [Captura](../capturas/nmap_top1000.png) | [grep open](../capturas/grep_nmap.png)
+📸 ![Captura](capturas/nmap_top1000.png) | ![grep open](capturas/grep_nmap.png)
 
 ---
 
@@ -162,7 +57,7 @@
 
 🔎 **Resultado:**
 
-📸 [Captura](../capturas/nmap_port_21.png)
+📸 ![Captura](capturas/nmap_port_21.png)
 
 ---
 
@@ -176,7 +71,7 @@
 📌 **Resultado:**
 
 🔴 El puerto 6200 **no respondió externamente**, por lo tanto: **NO** funciona.
-📸 [Captura](../capturas/msfconsole1.png)
+📸 ![Captura](capturas/msfconsole1.png)
 
 ---
 
@@ -190,7 +85,7 @@
 🔎 **Resultado:**
 
 🟢 Respuesta válida: `3.0.20`
-📸 [Captura](../capturas/nmap_smb.png)
+📸 ![Captura](capturas/nmap_smb.png)
 
 ---
 
@@ -209,7 +104,7 @@
 
 🔎 **Shell obtenida:**
 
-📸 [Captura](../capturas/msfconsole_para_flag1_2.png)
+📸 ![Captura](capturas/msfconsole_para_flag1_2.png)
 ✅ **Respuesta correcta:** `root`
 
 ---
@@ -218,7 +113,7 @@
 
 
 🟢 Flag: `60fc5d64febbdebfe8cc331838bff0b0`
-📸 [Flag 1](../capturas/Flag_1.png)
+📸 ![Flag 1](capturas/Flag_1.png)
 
 ---
 
@@ -226,7 +121,7 @@
 
 
 🟢 Flag: `c80b43503b56dc7b0dc82643157b4329`
-📸 [Flag 2](../capturas/Flag_2.png)
+📸 ![Flag 2](capturas/Flag_2.png)
 
 ---
 
