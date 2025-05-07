@@ -9,6 +9,9 @@
 ---
 
 📅 **Fecha:** Mayo 2025
+
+---
+
 🎯 **Objetivo:** Reproducir y documentar la resolución de la máquina *Lame*, la primera máquina publicada por Hack The Box.
 
 ---
@@ -42,7 +45,7 @@
 
 🎯 **Objetivo:** Identificar puertos TCP abiertos más comunes.
 
-✅ **Comando ejecutado:**
+✅ **Comandos ejecutados:**
 
 ```bash
 nmap -v -T4 -Pn --top-ports 1000 -oA nmap/top1000_tcp 10.129.56.2
@@ -77,7 +80,7 @@ Explicación:
 
 🎯 **Objetivo:** Determinar la versión del servicio FTP en el puerto 21.
 
-✅ **Comando ejecutado:**
+✅ **Comandos ejecutados:**
 
 ```bash
 nmap -sV -p21 -oA nmap/ftp_version 10.129.56.2
@@ -89,6 +92,7 @@ Explicación:
     -p21: Solo el puerto FTP.
 
     -oA nmap/ftp_version: Guarda en el subdirectorio nmap/.
+
 
 🔎 **Resultado:**
 
@@ -102,7 +106,7 @@ Explicación:
 
 🎯 **Objetivo:** Verificar si la vulnerabilidad conocida de backdoor está activa.
 
-✅ **Comando ejecutado (en Metasploit):**
+✅ **Comandos ejecutados (en Metasploit):**
 
 ```bash
 msfconsole
@@ -118,6 +122,7 @@ Explicación:
 
     run: ejecuta el exploit.
 
+
 🔎 **Resultado:**
 
 * El exploit se ejecuta pero **no devuelve sesión**.
@@ -130,7 +135,7 @@ Explicación:
 
 🎯 **Objetivo:** Enumerar la versión del servicio Samba en los puertos 139 y 445.
 
-✅ **Comando ejecutado:**
+✅ **Comandos ejecutados:**
 
 ```bash
 nmap -sV -Pn -p139,445 --script=smb-protocols,smb-os-discovery,smb2-security-mode,smb2-time -oA nmap/smb_version 10.129.56.2
@@ -147,6 +152,7 @@ Explicación:
     --script: ejecuta scripts de Nmap para obtener información adicional sobre Samba.
 
     -oA nmap/smb_version: guarda la salida en el subdirectorio nmap/.
+
 
 🔎 **Resultado:**
 
@@ -172,6 +178,7 @@ Explicación:
 ## 🔍 Task 6: ¿Qué usuario obtiene shell al explotar CVE-2007-2447?
 
 🎯 **Objetivo:** Determinar el contexto del shell recibido tras la explotación.
+
 
 ✅ **Resultado:**
 
@@ -200,6 +207,7 @@ Explicación:
 
     cat user.txt: muestra el contenido del archivo.
 
+
 🔎 **Resultado:**
 
 📸 ![Flag Usuario](capturas/Flag_1.png)
@@ -217,6 +225,7 @@ cd /root
 ls -la
 cat root.txt
 ```
+
 Explicación:
 
     cd: cambia al directorio root.
@@ -224,6 +233,7 @@ Explicación:
     ls -la: lista archivos y permisos.
 
     cat root.txt: muestra el contenido del archivo.
+
 
 🔎 **Resultado:**
 📸 ![Flag Root](capturas/Flag_2.png)
@@ -234,7 +244,7 @@ Explicación:
 
 🎯 **Objetivo:** Explicar por qué no todos los puertos escuchando son accesibles desde fuera.
 
-✅ **Comando ejecutado:**
+✅ **Comandos ejecutados:**
 
 ```bash
 netstat -tnlp
@@ -247,7 +257,8 @@ Explicación:
     -l: muestra solo puertos escuchando.
     -p: muestra el PID y nombre del programa.
 
-🔎 **Resultado:*
+
+🔎 **Resultado:**
 
 * Causa: **firewall**
 
@@ -258,6 +269,7 @@ Explicación:
 ## 🔍 Task 10: ¿Qué puerto escucha cuando se activa el backdoor de VSFTPd?
 
 🎯 **Objetivo:** Confirmar el comportamiento del backdoor.
+
 
 ✅ **Resultado:**
 
@@ -271,7 +283,7 @@ Explicación:
 
 🎯 **Objetivo:** Verificar con netstat si efectivamente se activa el puerto.
 
-✅ **Comando ejecutado:**
+✅ **Comandos ejecutados:**
 
 ```bash
 ss -tnlp | grep 6200
@@ -289,6 +301,7 @@ Explicación:
     -p: muestra el PID y nombre del programa.
 
     grep 6200: filtra la salida para mostrar solo el puerto 6200.
+
 
 🔎 **Resultado:**
 
