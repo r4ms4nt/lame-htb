@@ -1,8 +1,12 @@
----
-
 # 🧠 Lame - Hack The Box (HTB)
 
 > Análisis técnico, didáctico y documentado por **r4ms4nt**.
+
+![Logo](capturas/logo_r4ms4nt_circular.png)
+
+> **Primera máquina publicada en Hack The Box**. Diseñada como puerta de entrada para nuevos usuarios. Ideal para aprender enumeración, detección de vulnerabilidades clásicas y explotación básica con Metasploit.
+
+---
 
 📅 **Fecha:** Mayo 2025
 🎯 **Objetivo:** Reproducir y documentar la resolución de la máquina *Lame*, la primera máquina publicada por Hack The Box.
@@ -41,9 +45,24 @@
 ✅ **Comando ejecutado:**
 
 ```bash
-nmap -sS -Pn --top-ports 1000 -oA nmap/top1000_tcp 10.129.56.2
+nmap -v -T4 -Pn --top-ports 1000 -oA nmap/top1000_tcp 10.129.56.2
 grep open nmap/top1000_tcp.nmap
 ```
+
+Explicación:
+
+    -v: modo verbose.
+
+    -T4: velocidad razonablemente rápida.
+
+    -Pn: omite el ping inicial, asume que el host está activo.
+
+    --top-ports 1000: escanea los 1000 puertos TCP más comunes.
+
+    -oA nmap/top1000_tcp: guarda la salida en 3 formatos (normal, grepeable y XML) en el subdirectorio nmap/.
+
+    grep open: filtra la salida para mostrar solo los puertos abiertos.
+
 
 🔎 **Resultado:**
 
@@ -63,6 +82,13 @@ grep open nmap/top1000_tcp.nmap
 ```bash
 nmap -sV -p21 -oA nmap/ftp_version 10.129.56.2
 ```
+Explicación:
+
+    -sV: Detecta versiones de servicios.
+
+    -p21: Solo el puerto FTP.
+
+    -oA nmap/ftp_version: Guarda en el subdirectorio nmap/.
 
 🔎 **Resultado:**
 
@@ -84,6 +110,13 @@ use exploit/unix/ftp/vsftpd_234_backdoor
 set RHOSTS 10.129.56.2
 run
 ```
+Explicación:
+
+    use: carga el módulo de exploit.
+
+    set RHOSTS: establece la dirección IP del objetivo.
+
+    run: ejecuta el exploit.
 
 🔎 **Resultado:**
 
@@ -102,6 +135,18 @@ run
 ```bash
 nmap -sV -Pn -p139,445 --script=smb-protocols,smb-os-discovery,smb2-security-mode,smb2-time -oA nmap/smb_version 10.129.56.2
 ```
+
+Explicación:
+
+    -sV: Detecta versiones de servicios.
+
+    -Pn: Omite el ping inicial.
+
+    -p139,445: Escanea los puertos 139 y 445.
+
+    --script: ejecuta scripts de Nmap para obtener información adicional sobre Samba.
+
+    -oA nmap/smb_version: guarda la salida en el subdirectorio nmap/.
 
 🔎 **Resultado:**
 
@@ -147,6 +192,15 @@ cd /home/makis
 ls -la
 cat user.txt
 ```
+Explicación:
+
+    cd: cambia al directorio del usuario.
+
+    ls -la: lista archivos y permisos.
+
+    cat user.txt: muestra el contenido del archivo.
+
+🔎 **Resultado:**
 
 📸 ![Flag Usuario](capturas/Flag_1.png)
 
@@ -163,7 +217,15 @@ cd /root
 ls -la
 cat root.txt
 ```
+Explicación:
 
+    cd: cambia al directorio root.
+
+    ls -la: lista archivos y permisos.
+
+    cat root.txt: muestra el contenido del archivo.
+
+🔎 **Resultado:**
 📸 ![Flag Root](capturas/Flag_2.png)
 
 ---
@@ -177,8 +239,15 @@ cat root.txt
 ```bash
 netstat -tnlp
 ```
+Explicación:
 
-🔎 **Resultado:**
+    netstat -tnlp: muestra conexiones TCP activas y puertos escuchando.
+    -t: TCP
+    -n: muestra direcciones y puertos en formato numérico.
+    -l: muestra solo puertos escuchando.
+    -p: muestra el PID y nombre del programa.
+
+🔎 **Resultado:*
 
 * Causa: **firewall**
 
@@ -207,6 +276,19 @@ netstat -tnlp
 ```bash
 ss -tnlp | grep 6200
 ```
+Explicación:
+
+    ss: herramienta para investigar sockets.
+
+    -t: muestra conexiones TCP.
+
+    -n: muestra direcciones y puertos en formato numérico.
+
+    -l: muestra solo puertos escuchando.
+
+    -p: muestra el PID y nombre del programa.
+
+    grep 6200: filtra la salida para mostrar solo el puerto 6200.
 
 🔎 **Resultado:**
 
